@@ -27,11 +27,6 @@ class InventoryService
             }
 
             if ($reservation->status !== 'active' || $reservation->expires_at->isPast()) {
-                if ($reservation->status === 'active') {
-                    $reservation->update(['status' => 'expired']);
-                    DB::afterCommit(fn () => Cache::forget(self::PRODUCT_CACHE_KEY));
-                }
-
                 throw ValidationException::withMessages([
                     'reservation_id' => ['Reservation has expired or is no longer valid.'],
                 ]);
