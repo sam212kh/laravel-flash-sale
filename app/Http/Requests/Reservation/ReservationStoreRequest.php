@@ -12,7 +12,7 @@ class ReservationStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class ReservationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            ['user_id' => ['required', 'integer', 'min:1']]
         ];
     }
 }
