@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('reservation_id')->unique()->constrained()->restrictOnDelete();
+            $table->foreignId('product_id')->constrained()->restrictOnDelete();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->string('status')->default('pending');
             $table->timestamps();
+            $table->index(['product_id', 'user_id']);
         });
     }
 

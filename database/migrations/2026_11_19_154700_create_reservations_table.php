@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->string('status', 20)->default('active')->index();
+            $table->timestampTz('expires_at')->index();
             $table->timestamps();
+            $table->index(['product_id', 'status', 'expires_at']);
         });
     }
 
