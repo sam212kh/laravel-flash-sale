@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('sku')->unique();
             $table->unsignedInteger('stock');
             $table->timestamps();
-            $table->check('stock >= 0');
+            //$table->check('stock >= 0');
         });
     }
 
