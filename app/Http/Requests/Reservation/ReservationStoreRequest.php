@@ -23,7 +23,7 @@ class ReservationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            ['user_id' => ['required', 'integer', 'min:1']]
+           'user_id' => ['required', 'integer', 'min:1']
         ];
     }
 }
